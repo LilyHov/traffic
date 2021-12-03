@@ -25,7 +25,7 @@ export const tableData = (data: {data:any
 
 }
 
-export const filterByDate = (data:any) => {
+export const filterByDate = (data:any, dateRange:any) => {
 
 }
 

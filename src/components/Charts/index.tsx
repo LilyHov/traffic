@@ -35,8 +35,8 @@ function Charts({data, getMetrics}) {
             <div className='dropdown'>
                 <p>Chart metric</p>
                 <select className='dropdown-body' onChange={handleChangeType}>
-                    {items.map(item => (
-                        <option className="dropdown-item" value={item.value}>
+                    {items.map((item, key) => (
+                        <option className="dropdown-item" value={item.value} key={key}>
                             {item.title}
                         </option>
                     ))}
