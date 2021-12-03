@@ -1,5 +1,5 @@
 const dataLabels = [
-    {value: 'day', title: "Date"},
+    // {value: 'day', title: "Date"},
     {value: 'clicks', title: "Clicks"},
     {value: 'impressions', title: "Impression"},
     {value: 'ctr', title: "CTR"},

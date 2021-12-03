@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Chart from 'react-google-charts';
 import dataLabels from "../../constants";
 // @ts-ignore
-function Charts({data}) {
+function Charts({data, getMetrics}) {
     const items = dataLabels;
     const [selectedItem, setSelectedItem] = useState(items[0].value);
 
@@ -10,6 +10,9 @@ function Charts({data}) {
         const value = e.target.value;
         selectedItem === value ? setSelectedItem(items[0].value) : setSelectedItem(value);
     }
+    useEffect(()=> {
+        getMetrics(selectedItem)
+    } )
 
     return (
         <>
