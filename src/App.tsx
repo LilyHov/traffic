@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import {tableData, chartData} from './utils'
+import agent from './agent';
+
+import Layout from "./components/Layout";
+import Charts from "./components/Charts";
+import Table from "./components/Table";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // @ts-ignore
+
+    const metric = 'leads'
+    const tableChartData = chartData(agent.StatisticData(), metric)
+    const tableCustomizeData = tableData(agent.StatisticData())
+
+    return (
+    <Layout>
+     <Charts data={tableChartData}/>
+     <Table data={tableCustomizeData}/>
+    </Layout>
   );
 }
 
