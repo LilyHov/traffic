@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Chart from 'react-google-charts';
 import dataLabels from "../../constants";
+import './styles.css'
 // @ts-ignore
 function Charts({data, getMetrics}) {
     const items = dataLabels;
@@ -32,9 +33,10 @@ function Charts({data, getMetrics}) {
                 // ]}
             />
             <div className='dropdown'>
-                <select className={`dropdown-body`}  onChange={handleChangeType}>
+                <p>Chart metric</p>
+                <select className='dropdown-body' onChange={handleChangeType}>
                     {items.map(item => (
-                        <option className="dropdown-item"  value={item.value}>
+                        <option className="dropdown-item" value={item.value}>
                             {item.title}
                         </option>
                     ))}
