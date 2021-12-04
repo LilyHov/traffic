@@ -9,14 +9,23 @@ function Table({data}) {
                 chartType="Table"
                 loader={<div>Loading Chart</div>}
                 data={data}
+                formatters={[
+                    {
+                        type: 'DateFormat',
+                        column: 0,
+                        options: {
+                            formatType: 'long',
+                        },
+                    },
+                ]}
                 options={
                     {
                         page: 'enable',
                         pageSize: 25,
-                        // pagingSymbols: {
-                        //     prev: 'prev',
-                        //     next: 'next'
-                        // },
+                        pagingSymbols: {
+                            prev: 'Prev',
+                            next: 'Next'
+                        },
                         pagingButtonsConfiguration: 'auto'
                     }
                 }

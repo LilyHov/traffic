@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 
 import {tableData, chartData, filterByDate} from './utils'
 import agent from './agent';
@@ -12,19 +12,21 @@ function App() {
 
     const data = agent.StatisticData()
     const [metricsValue, setMetricsValue] = useState('');
-    const [dateRange, setDateRange] = useState('');
+    const [dateRange, setDateRange] = useState({startDate: new Date("2019-01-01"), endDate: new Date("2021-01-01")});
+
+    // const minAndMaxDateValue = minAndMaxValues(data, 'day')
 
     function getMetrics(metricsValue: any) {
          setMetricsValue(metricsValue)
     }
 
-    function getDateRange(dateRange: any) {
-            setDateRange(dateRange)
-    }
+  const getDateRange =  useCallback((startDate:any, endDate:any) =>  {
+        setDateRange({startDate,endDate})
+    }, [setDateRange])
 
-    const tableChartData =  chartData(data, metricsValue)
-    const tableCustomizeData = tableData(data)
-
+    const tableChartData = chartData(filterByDate(data,dateRange), metricsValue)
+    const tableCustomizeData = tableData(filterByDate(data, dateRange))
+console.log(filterByDate(data,dateRange), data,dateRange, 'ddddd')
     return (
         <Layout>
              <DataFilter getDateRange={getDateRange}/>
