@@ -4,7 +4,7 @@ import metricsLabels from "../../constants/metricsLabels";
 import "./styles.css";
 
 type Props = {
-    data: {} | any[] | undefined,
+    data: any[],
     getMetrics: Function,
 }
 
@@ -35,9 +35,9 @@ function Charts({data, getMetrics}: Props) {
             {/*metrics view*/}
             <div className='dropdown'>
                 <p>Chart metric</p>
-                <select className='dropdown-body' onChange={handleChangeType}>
+                <select className='dropdown-body' data-testid="select" onChange={handleChangeType}>
                     {items.map((item, key) => (
-                        <option className="dropdown-item" value={item.value} key={key}>
+                        <option data-testid="select-option" className="dropdown-item" value={item.value} key={key}>
                             {item.title}
                         </option>
                     ))}

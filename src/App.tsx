@@ -23,7 +23,7 @@ function App() {
     // getting metric dropdown value from child via level up state functionality
     const getMetrics = useCallback( (metricsValue: any) => {
          setMetricsValue(metricsValue)
-    },[metricsValue, setMetricsValue])
+    },[setMetricsValue])
 
     // getting date range values from child via level up state functionality
     const getDateRange =  useCallback((startDate:any, endDate:any) =>  {
