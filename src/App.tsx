@@ -30,7 +30,7 @@ function App() {
     const tableCustomizeData = tableData(filterByDate(data, dateRange))
 
     return (
-        <Layout>
+        <Layout headerText={'Data Visualisation and Analytics'} pageTitle={'Analytics'}>
              <DataFilter getDateRange={getDateRange} minDate={minDate} maxDate={maxDate}/>
              <Charts data={tableChartData} getMetrics={getMetrics}/>
              <Table data={tableCustomizeData}/>

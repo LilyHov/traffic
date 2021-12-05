@@ -1,6 +1,15 @@
 .table-wrapper {
-
+margin: 2em 0;
 }
 .google-visualization-table-table {
-    font-size: 12pt !important;
+    font-size: 12.5pt !important;
+}
+.google-visualization-table-th{
+    background-image: none !important;
+    min-width: 120px !important;
+    height: 40px;
+}
+
+.google-visualization-table-div-page {
+    background-image: none !important;
 }

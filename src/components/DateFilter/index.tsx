@@ -12,12 +12,12 @@ function DataFilter({getDateRange, minDate, maxDate}) {
     }, [startDate,endDate,getDateRange])
 
     return (
-        <div className='test'>
+        <div className='date-picker-wrapper'>
             <div className="date-picker">
                 <p>Month from</p>
             <DatePicker
                 selected={startDate}
-                dateFormat="MM-yyyy"
+                dateFormat="dd-MM-yyyy"
                 onChange={(date: Date | null) => date && setStartDate(date)}
                 selectsStart
                 startDate={startDate}
@@ -28,7 +28,7 @@ function DataFilter({getDateRange, minDate, maxDate}) {
             <p>Month to</p>
             <DatePicker
                 selected={endDate}
-                dateFormat="MM-yyyy"
+                dateFormat="dd-MM-yyyy"
                 onChange={(date: Date | null) => date && setEndDate(date)}
                 selectsEnd
                 startDate={startDate}
