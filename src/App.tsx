@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 
-import {tableData, chartData, filterByDate} from './utils'
+import {tableData, chartData, filterByDate, minAndMaxDateValues} from './utils'
 import agent from './agent';
 
 import Layout from "./components/Layout";
@@ -10,26 +10,28 @@ import DataFilter from "./components/DateFilter";
 
 function App() {
 
-    const data = agent.StatisticData()
-    const [metricsValue, setMetricsValue] = useState('');
-    const [dateRange, setDateRange] = useState({startDate: new Date("2019-01-01"), endDate: new Date("2021-01-01")});
+    const data = agent.StatisticData() || null
 
-    // const minAndMaxDateValue = minAndMaxValues(data, 'day')
+    const maxDate = minAndMaxDateValues(data).maxDate
+    const minDate = minAndMaxDateValues(data).minDate
+
+    const [metricsValue, setMetricsValue] = useState('');
+    const [dateRange, setDateRange] = useState({startDate: maxDate, endDate: minDate});
 
     function getMetrics(metricsValue: any) {
          setMetricsValue(metricsValue)
     }
 
-  const getDateRange =  useCallback((startDate:any, endDate:any) =>  {
+    const getDateRange =  useCallback((startDate:any, endDate:any) =>  {
         setDateRange({startDate,endDate})
     }, [setDateRange])
 
     const tableChartData = chartData(filterByDate(data,dateRange), metricsValue)
     const tableCustomizeData = tableData(filterByDate(data, dateRange))
-console.log(filterByDate(data,dateRange), data,dateRange, 'ddddd')
+
     return (
         <Layout>
-             <DataFilter getDateRange={getDateRange}/>
+             <DataFilter getDateRange={getDateRange} minDate={minDate} maxDate={maxDate}/>
              <Charts data={tableChartData} getMetrics={getMetrics}/>
              <Table data={tableCustomizeData}/>
         </Layout>

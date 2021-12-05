@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Chart from 'react-google-charts';
-import dataLabels from "../../constants";
+import metricsLabels from "../../constants/metricsLabels";
 import './styles.css'
 // @ts-ignore
 function Charts({data, getMetrics}) {
-    const items = dataLabels;
+    const items = metricsLabels;
     const [selectedItem, setSelectedItem] = useState(items[0].value);
 
     const handleChangeType = (e: any) => {
@@ -13,25 +13,18 @@ function Charts({data, getMetrics}) {
     }
     useEffect(()=> {
         getMetrics(selectedItem)
-    } )
+    }, [getMetrics, selectedItem] )
 
     return (
         <>
+            {/*chart view with configs*/}
             <Chart
                 height='550px'
                 chartType="Bar"
                 loader={<div>Loading Chart</div>}
                 data={data}
-                // controls={[
-                //     {
-                //         controlType: 'DateRangeFilter',
-                //         options: {
-                //             filterColumnLabel: 'Date',
-                //             ui: {format: {pattern: 'yyyy mm'}},
-                //         },
-                //     }
-                // ]}
             />
+            {/*metrics view*/}
             <div className='dropdown'>
                 <p>Chart metric</p>
                 <select className='dropdown-body' onChange={handleChangeType}>

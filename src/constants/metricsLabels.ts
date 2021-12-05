@@ -1,5 +1,4 @@
-const dataLabels = [
-    // {value: 'day', title: "Date"},
+const metricsLabels = [
     {value: 'clicks', title: "Clicks"},
     {value: 'impressions', title: "Impression"},
     {value: 'ctr', title: "CTR"},
@@ -11,4 +10,4 @@ const dataLabels = [
     {value: 'net_revenue', title: "Net Revenue"}
     ];
 
-export default dataLabels
+export default metricsLabels

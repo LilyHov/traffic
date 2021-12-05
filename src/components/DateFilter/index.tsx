@@ -1,11 +1,11 @@
-import React, {useCallback, useEffect, useMemo, useState} from "react";
+import React, {useEffect, useState} from "react";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import './styles.css';
 // @ts-ignore
-function DataFilter({getDateRange}) {
-    const [startDate, setStartDate] = useState(new Date("2019-01-01"));
-    const [endDate, setEndDate] = useState(new Date("2021-02-01"));
+function DataFilter({getDateRange, minDate, maxDate}) {
+    const [startDate, setStartDate] = useState(minDate);
+    const [endDate, setEndDate] = useState(maxDate);
 
     useEffect(() => {
         getDateRange(startDate,endDate)
@@ -18,7 +18,7 @@ function DataFilter({getDateRange}) {
             <DatePicker
                 selected={startDate}
                 dateFormat="MM-yyyy"
-                onChange={(date: Date | null, event: React.SyntheticEvent<any> | undefined) => date && setStartDate(date)}
+                onChange={(date: Date | null) => date && setStartDate(date)}
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
@@ -29,7 +29,7 @@ function DataFilter({getDateRange}) {
             <DatePicker
                 selected={endDate}
                 dateFormat="MM-yyyy"
-                onChange={(date: Date | null, event: React.SyntheticEvent<any> | undefined) => date && setEndDate(date)}
+                onChange={(date: Date | null) => date && setEndDate(date)}
                 selectsEnd
                 startDate={startDate}
                 endDate={endDate}
@@ -40,4 +40,4 @@ function DataFilter({getDateRange}) {
     );
 }
 
-export default React.memo(DataFilter);
+export default DataFilter;
