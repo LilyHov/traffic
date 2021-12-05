@@ -28,6 +28,8 @@ function DataFilter({getDateRange, minDate, maxDate}: Props) {
                 dateFormat="dd-MM-yyyy"
                 onChange={(date: Date | null) => date && setStartDate(date)}
                 selectsStart
+                minDate={startDate}
+                maxDate={endDate}
                 startDate={startDate}
                 endDate={endDate}
             />
@@ -42,6 +44,7 @@ function DataFilter({getDateRange, minDate, maxDate}: Props) {
                 startDate={startDate}
                 endDate={endDate}
                 minDate={startDate}
+                maxDate={endDate}
             />
             </div>
         </div>
