@@ -9,6 +9,7 @@ type Props = {
 }
 
 function Charts({data, getMetrics}: Props) {
+
     const items = metricsLabels;
     const [selectedItem, setSelectedItem] = useState(items[0].value);
 
@@ -16,6 +17,8 @@ function Charts({data, getMetrics}: Props) {
         const value = e.target.value;
         selectedItem === value ? setSelectedItem(items[0].value) : setSelectedItem(value);
     }
+
+    // state level up functionality for sending data up to parent
     useEffect(()=> {
         getMetrics(selectedItem)
     }, [getMetrics, selectedItem] )

@@ -15,11 +15,17 @@ export const minAndMaxDateValues = (data:any) => {
 }
 
 // filter for date range
-export const filterByDate = (data: any[], dateRange: { startDate: any; endDate: any; }) => {
+
+interface dateRange {
+    startDate: Date;
+    endDate: Date;
+}
+
+export const filterByDate = (data: any[], dateRange: dateRange) => {
     const startDate= dateRange.startDate.toISOString().split('T')[0] || ''
     const endDate = dateRange.endDate.toISOString().split('T')[0] || ''
-    return data.filter((a) => {
-        return (a.day >= startDate && a.day <= endDate);
+    return data.filter((item) => {
+        return (item.day >= startDate && item.day <= endDate);
     })
 }
 

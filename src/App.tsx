@@ -10,22 +10,27 @@ import DataFilter from "./components/DateFilter";
 
 function App() {
 
+    // get data
     const data = agent.StatisticData() || null
 
+    // get min and max date value for setting default range values
     const maxDate = minAndMaxDateValues(data).maxDate
     const minDate = minAndMaxDateValues(data).minDate
 
     const [metricsValue, setMetricsValue] = useState('');
     const [dateRange, setDateRange] = useState({startDate: maxDate, endDate: minDate});
 
-    function getMetrics(metricsValue: any) {
+    // getting metric dropdown value from child via level up state functionality
+    const getMetrics = useCallback( (metricsValue: any) => {
          setMetricsValue(metricsValue)
-    }
+    },[metricsValue, setMetricsValue])
 
+    // getting date range values from child via level up state functionality
     const getDateRange =  useCallback((startDate:any, endDate:any) =>  {
         setDateRange({startDate,endDate})
     }, [setDateRange])
 
+    // filter and set data for chart and table
     const tableChartData = chartData(filterByDate(data,dateRange), metricsValue)
     const tableCustomizeData = tableData(filterByDate(data, dateRange))
 

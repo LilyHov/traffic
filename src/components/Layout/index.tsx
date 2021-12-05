@@ -7,7 +7,7 @@ type Props = {
     children?: ReactNode;
 }
 
-// TODO: implement footer and appBar, also we can create metatags for SEO optimization
+// TODO: implement footer and appBar, also we can create metatags in this file for SEO optimization
 
 function Layout({children, headerText, pageTitle} : Props) {
 
