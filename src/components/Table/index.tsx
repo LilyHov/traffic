@@ -1,8 +1,12 @@
-import React from 'react';
-import Chart from 'react-google-charts';
-import './styles.css';
-// @ts-ignore
-function Table({data}) {
+import React from "react";
+import Chart from "react-google-charts";
+import "./styles.css";
+
+type Props = {
+    data: {} | any[] | undefined
+}
+
+function Table({data}: Props) {
     return (
         <div className="table-wrapper">
             <Chart

@@ -36,7 +36,7 @@ export const tableData = (data: any[]) => {
 }
 
 //correcting data scheme for google-chart package with metrics filter
-export const chartData = (data: { [x: string]: any; day: any; }[], metrics: string) => {
+export const chartData = (data: any[], metrics: string) => {
     let temp = []
     // for multiselected metrics add label names
     temp.push(['Data', ''])

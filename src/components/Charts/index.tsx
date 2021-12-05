@@ -1,9 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import Chart from 'react-google-charts';
+import React, {useEffect, useState} from "react";
+import Chart from "react-google-charts";
 import metricsLabels from "../../constants/metricsLabels";
-import './styles.css'
-// @ts-ignore
-function Charts({data, getMetrics}) {
+import "./styles.css";
+
+type Props = {
+    data: {} | any[] | undefined,
+    getMetrics: Function,
+}
+
+function Charts({data, getMetrics}: Props) {
     const items = metricsLabels;
     const [selectedItem, setSelectedItem] = useState(items[0].value);
 

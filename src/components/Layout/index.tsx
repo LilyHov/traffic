@@ -1,12 +1,20 @@
-import React, {useEffect} from 'react';
-import './styles.css';
+import React, {ReactNode, useEffect} from "react";
+import "./styles.css";
 
-// @ts-ignore
+type Props = {
+    pageTitle: string,
+    headerText: string,
+    children?: ReactNode;
+}
+
 // TODO: implement footer and appBar, also we can create metatags for SEO optimization
-function Layout({children, headerText, pageTitle}) {
+
+function Layout({children, headerText, pageTitle} : Props) {
+
     useEffect(() => {
         document.title = pageTitle
-    }, []);
+    }, [pageTitle]);
+
     return (
         <div className="app-wrapper">
             <p className="header-text">{headerText}</p>

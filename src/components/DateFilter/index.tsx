@@ -1,9 +1,15 @@
 import React, {useEffect, useState} from "react";
-import DatePicker from 'react-datepicker';
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './styles.css';
-// @ts-ignore
-function DataFilter({getDateRange, minDate, maxDate}) {
+import "./styles.css";
+
+type Props = {
+    getDateRange: (arg0: any, arg1: any) => void,
+    minDate: any,
+    maxDate: any
+}
+
+function DataFilter({getDateRange, minDate, maxDate}: Props) {
     const [startDate, setStartDate] = useState(minDate);
     const [endDate, setEndDate] = useState(maxDate);
 
