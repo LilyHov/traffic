@@ -1,12 +1,17 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState} from "react";
 
-import {tableData, chartData, filterByDate, minAndMaxDateValues} from './utils'
-import agent from './agent';
+import {tableData, chartData, filterByDate, minAndMaxDateValues} from "./utils";
+import agent from "./agent";
 
 import Layout from "./components/Layout";
 import Charts from "./components/Charts";
 import Table from "./components/Table";
 import DataFilter from "./components/DateFilter";
+
+export interface IDateRange {
+    startDate: Date,
+    endDate: Date
+}
 
 function App() {
 
@@ -18,7 +23,7 @@ function App() {
     const minDate = minAndMaxDateValues(data).minDate
 
     const [metricsValue, setMetricsValue] = useState('');
-    const [dateRange, setDateRange] = useState({startDate: maxDate, endDate: minDate});
+    const [dateRange, setDateRange] = useState<IDateRange>({startDate: minDate, endDate: maxDate});
 
     // getting metric dropdown value from child via level up state functionality
     const getMetrics = useCallback( (metricsValue: any) => {
